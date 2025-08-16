@@ -1,0 +1,22 @@
+{
+  "name": "eslint-plugin-no-comments",
+  "version": "1.0.0",
+  "description": "ESLint plugin to disallow comments in JavaScript and TypeScript files",
+  "main": "index.js",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "comments",
+    "javascript",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": ">=6.0.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}
