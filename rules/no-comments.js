@@ -34,6 +34,11 @@ module.exports = {
             type: "boolean", 
             description: "Allow TypeScript directive comments (@ts-ignore, etc.)",
             default: true
+          },
+          allowJSDoc: {
+            type: "boolean",
+            description: "Allow JSDoc comments (/** ... */)",
+            default: false
           }
         },
         additionalProperties: false
@@ -50,7 +55,8 @@ module.exports = {
       allowedPatterns = [],
       allowedPrefixes = [],
       allowEslintDirectives = true,
-      allowTypeScriptDirectives = true
+      allowTypeScriptDirectives = true,
+      allowJSDoc = false
     } = options;
 
     const compiledPatterns = allowedPatterns.map(pattern => new RegExp(pattern));
@@ -64,6 +70,13 @@ module.exports = {
     }
 
     function isCommentAllowed(comment) {
+      if (allowJSDoc && comment.type === 'Block') {
+        const rawComment = sourceCode.getText(comment);
+        if (rawComment.startsWith('/**')) {
+          return true;
+        }
+      }
+
       const commentText = comment.value.trim();
 
       for (const prefix of allowedPrefixes) {
