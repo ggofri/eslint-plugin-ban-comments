@@ -1,5 +1,5 @@
 module.exports = {
   rules: {
-    "no-comments": require("./rules/no-comments")
+    "ban-comments": require("./rules/ban-comments")
   }
 };

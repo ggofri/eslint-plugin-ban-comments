@@ -1,4 +1,4 @@
-# eslint-plugin-no-comments
+# eslint-plugin-ban-comments
 
 An ESLint plugin that disallows comments in JavaScript and TypeScript files, with configurable exceptions for specific patterns and directives.
 
@@ -17,29 +17,29 @@ Note: This approach works best for teams that prioritize clean, self-explanatory
 ## Installation
 
 ```bash
-npm install eslint-plugin-no-comments --save-dev
+npm install eslint-plugin-ban-comments --save-dev
 ```
 
 Or with other package managers:
 
 ```bash
 # Using Yarn
-yarn add eslint-plugin-no-comments --dev
+yarn add eslint-plugin-ban-comments --dev
 
 # Using pnpm
-pnpm add eslint-plugin-no-comments --save-dev
+pnpm add eslint-plugin-ban-comments --save-dev
 
 # Using Bun
-bun add eslint-plugin-no-comments --dev
+bun add eslint-plugin-ban-comments --dev
 ```
 
 ## Usage
 
-Add `no-comments` to the plugins section of your `.eslintrc` configuration file:
+Add `ban-comments` to the plugins section of your `.eslintrc` configuration file:
 
 ```json
 {
-  "plugins": ["no-comments"]
+  "plugins": ["ban-comments"]
 }
 ```
 
@@ -48,7 +48,7 @@ Then configure the rule under the rules section:
 ```json
 {
   "rules": {
-    "no-comments/no-comments": "error"
+    "ban-comments/ban-comments": "error"
   }
 }
 ```
@@ -104,7 +104,7 @@ An array of regex patterns for comments that should be allowed.
 
 ```json
 {
-  "no-comments/no-comments": ["error", {
+  "ban-comments/ban-comments": ["error", {
     "allowedPatterns": ["^TODO:", "^FIXME:"]
   }]
 }
@@ -123,7 +123,7 @@ An array of prefixes for comments that should be allowed.
 
 ```json
 {
-  "no-comments/no-comments": ["error", {
+  "ban-comments/ban-comments": ["error", {
     "allowedPrefixes": ["DEBUG:", "NOTE:"]
   }]
 }
@@ -142,7 +142,7 @@ Boolean flag to allow ESLint directive comments. Default: `true`.
 
 ```json
 {
-  "no-comments/no-comments": ["error", {
+  "ban-comments/ban-comments": ["error", {
     "allowEslintDirectives": false
   }]
 }
@@ -154,7 +154,7 @@ Boolean flag to allow TypeScript directive comments. Default: `true`.
 
 ```json
 {
-  "no-comments/no-comments": ["error", {
+  "ban-comments/ban-comments": ["error", {
     "allowTypeScriptDirectives": false
   }]
 }
@@ -166,7 +166,7 @@ Boolean flag to allow JSDoc comments (`/** ... */`). Default: `false`.
 
 ```json
 {
-  "no-comments/no-comments": ["error", {
+  "ban-comments/ban-comments": ["error", {
     "allowJSDoc": true
   }]
 }
@@ -197,9 +197,9 @@ const x = 1;
 
 ```json
 {
-  "plugins": ["no-comments"],
+  "plugins": ["ban-comments"],
   "rules": {
-    "no-comments/no-comments": ["error", {
+    "ban-comments/ban-comments": ["error", {
       "allowedPatterns": ["^TODO:", "^FIXME:", "^NOTE:"],
       "allowedPrefixes": ["DEBUG:", "HACK:"],
       "allowEslintDirectives": true,
