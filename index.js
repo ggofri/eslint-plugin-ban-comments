@@ -1,5 +1,7 @@
-module.exports = {
+import banComments from "./rules/ban-comments.js";
+
+export default {
   rules: {
-    "ban-comments": require("./rules/ban-comments")
-  }
+    "ban-comments": banComments,
+  },
 };

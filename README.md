@@ -63,7 +63,7 @@ Examples of **incorrect** code for this rule:
 // This is a regular comment
 const x = 1;
 
-/* 
+/*
  * This is a block comment
  */
 const y = 2;
@@ -104,9 +104,12 @@ An array of regex patterns for comments that should be allowed.
 
 ```json
 {
-  "ban-comments/ban-comments": ["error", {
-    "allowedPatterns": ["^TODO:", "^FIXME:"]
-  }]
+  "ban-comments/ban-comments": [
+    "error",
+    {
+      "allowedPatterns": ["^TODO:", "^FIXME:"]
+    }
+  ]
 }
 ```
 
@@ -123,9 +126,12 @@ An array of prefixes for comments that should be allowed.
 
 ```json
 {
-  "ban-comments/ban-comments": ["error", {
-    "allowedPrefixes": ["DEBUG:", "NOTE:"]
-  }]
+  "ban-comments/ban-comments": [
+    "error",
+    {
+      "allowedPrefixes": ["DEBUG:", "NOTE:"]
+    }
+  ]
 }
 ```
 
@@ -142,9 +148,12 @@ Boolean flag to allow ESLint directive comments. Default: `true`.
 
 ```json
 {
-  "ban-comments/ban-comments": ["error", {
-    "allowEslintDirectives": false
-  }]
+  "ban-comments/ban-comments": [
+    "error",
+    {
+      "allowEslintDirectives": false
+    }
+  ]
 }
 ```
 
@@ -154,9 +163,12 @@ Boolean flag to allow TypeScript directive comments. Default: `true`.
 
 ```json
 {
-  "ban-comments/ban-comments": ["error", {
-    "allowTypeScriptDirectives": false
-  }]
+  "ban-comments/ban-comments": [
+    "error",
+    {
+      "allowTypeScriptDirectives": false
+    }
+  ]
 }
 ```
 
@@ -166,9 +178,12 @@ Boolean flag to allow JSDoc comments (`/** ... */`). Default: `false`.
 
 ```json
 {
-  "ban-comments/ban-comments": ["error", {
-    "allowJSDoc": true
-  }]
+  "ban-comments/ban-comments": [
+    "error",
+    {
+      "allowJSDoc": true
+    }
+  ]
 }
 ```
 
@@ -199,13 +214,16 @@ const x = 1;
 {
   "plugins": ["ban-comments"],
   "rules": {
-    "ban-comments/ban-comments": ["error", {
-      "allowedPatterns": ["^TODO:", "^FIXME:", "^NOTE:"],
-      "allowedPrefixes": ["DEBUG:", "HACK:"],
-      "allowEslintDirectives": true,
-      "allowTypeScriptDirectives": true,
-      "allowJSDoc": false
-    }]
+    "ban-comments/ban-comments": [
+      "error",
+      {
+        "allowedPatterns": ["^TODO:", "^FIXME:", "^NOTE:"],
+        "allowedPrefixes": ["DEBUG:", "HACK:"],
+        "allowEslintDirectives": true,
+        "allowTypeScriptDirectives": true,
+        "allowJSDoc": false
+      }
+    ]
   }
 }
 ```

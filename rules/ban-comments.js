@@ -1,10 +1,10 @@
-module.exports = {
+export default {
   meta: {
     type: "suggestion",
-    docs: { 
+    docs: {
       description: "Disallow comments in JavaScript and TypeScript files",
       category: "Stylistic Issues",
-      recommended: false
+      recommended: false,
     },
     fixable: "code",
     schema: [
@@ -14,39 +14,48 @@ module.exports = {
           allowedPatterns: {
             type: "array",
             items: {
-              type: "string"
+              type: "string",
             },
-            description: "Array of regex patterns for comments that should be allowed"
+            description:
+              "Array of regex patterns for comments that should be allowed",
           },
           allowedPrefixes: {
             type: "array",
             items: {
-              type: "string"
+              type: "string",
             },
-            description: "Array of prefixes for comments that should be allowed"
+            description:
+              "Array of prefixes for comments that should be allowed",
           },
           allowEslintDirectives: {
             type: "boolean",
-            description: "Allow ESLint directive comments (eslint-disable, etc.)",
-            default: true
+            description:
+              "Allow ESLint directive comments (eslint-disable, etc.)",
+            default: true,
           },
           allowTypeScriptDirectives: {
-            type: "boolean", 
-            description: "Allow TypeScript directive comments (@ts-ignore, etc.)",
-            default: true
+            type: "boolean",
+            description:
+              "Allow TypeScript directive comments (@ts-ignore, etc.)",
+            default: true,
           },
           allowJSDoc: {
             type: "boolean",
             description: "Allow JSDoc comments (/** ... */)",
-            default: false
-          }
+            default: false,
+          },
+          allowShebang: {
+            type: "boolean",
+            description: "Allow shebang comments (#! at start of file)",
+            default: true,
+          },
         },
-        additionalProperties: false
-      }
+        additionalProperties: false,
+      },
     ],
     messages: {
-      noComments: "Comments are not allowed."
-    }
+      noComments: "Comments are not allowed.",
+    },
   },
   create(context) {
     const sourceCode = context.getSourceCode();
@@ -56,10 +65,13 @@ module.exports = {
       allowedPrefixes = [],
       allowEslintDirectives = true,
       allowTypeScriptDirectives = true,
-      allowJSDoc = false
+      allowJSDoc = false,
+      allowShebang = true,
     } = options;
 
-    const compiledPatterns = allowedPatterns.map(pattern => new RegExp(pattern));
+    const compiledPatterns = allowedPatterns.map(
+      (pattern) => new RegExp(pattern),
+    );
 
     const defaultPatterns = [];
     if (allowEslintDirectives) {
@@ -70,9 +82,13 @@ module.exports = {
     }
 
     function isCommentAllowed(comment) {
-      if (allowJSDoc && comment.type === 'Block') {
+      if (allowShebang && comment.type === "Shebang") {
+        return true;
+      }
+
+      if (allowJSDoc && comment.type === "Block") {
         const rawComment = sourceCode.getText(comment);
-        if (rawComment.startsWith('/**')) {
+        if (rawComment.startsWith("/**")) {
           return true;
         }
       }
@@ -110,11 +126,11 @@ module.exports = {
               messageId: "noComments",
               fix(fixer) {
                 return fixer.remove(comment);
-              }
+              },
             });
           }
         });
-      }
+      },
     };
-  }
+  },
 };

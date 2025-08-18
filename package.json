@@ -19,5 +19,14 @@
   },
   "engines": {
     "node": ">=10.0.0"
-  }
+  },
+  "scripts": {
+    "test": "node test/ban-comments.test.js",
+    "lint": "eslint"
+  },
+  "devDependencies": {
+    "eslint": "^9.33.0",
+    "typescript": "^5.9.2"
+  },
+  "type": "module"
 }
