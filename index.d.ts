@@ -20,8 +20,9 @@ interface BanCommentsRuleOptions {
 
 declare const plugin: {
   rules: {
-    "ban-comments": Rule.RuleModule<"noComments", [BanCommentsRuleOptions?]>;
+    "ban-comments": Rule.RuleModule;
   };
 };
 
-export = plugin;
+export default plugin;
+

@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-ban-comments",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ESLint plugin to disallow comments in JavaScript and TypeScript files",
   "main": "index.js",
   "types": "index.d.ts",

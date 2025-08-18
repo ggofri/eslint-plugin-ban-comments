@@ -144,3 +144,4 @@ ruleTester.run("ban-comments", rule, {
     },
   ],
 });
+

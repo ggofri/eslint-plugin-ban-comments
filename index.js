@@ -5,3 +5,4 @@ export default {
     "ban-comments": banComments,
   },
 };
+
